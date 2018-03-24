@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Memory Game - Refactor</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Rammetto+One" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <!-- Header -->
+    <header>
+        <h1 id="main-heading">Galactic Memory Game</h1>
+    </header>
+
+    <!-- Score Panel -->
+    <section class="score-panel">
+        <ul class="stars">
+            <li class="list">
+                <i class="fa fa-star" id="star-one"></i>
+            </li>
+            <li class="list">
+                <i class="fa fa-star" id="star-two"></i>
+            </li>
+            <li class="list">
+                <i class="fa fa-star" id="star-three"></i>
+                <span class="moves">0</span> Moves
+                <span class="timer">0</span>
+            </li>
+        </ul>
+        <span class="restart"> Restart: 
+            <i class="fas fa-redo"></i>
+        </span>
+    </section>
+
+        <!-- Grid -->
+        <div class="grid-container">
+            <div class="card"><img class="card_img" src="images/holocron.jpg" alt="jedi-holocron" onclick="choose(0)"></div>
+            <div class="card"><img class="card_img" src="images/holocron.jpg" alt="jedi-holocron" onclick="choose(1)"></div>
+            <div class="card"><img class="card_img" src="images/holocron.jpg" alt="jedi-holocron" onclick="choose(2)"></div>
+            <div class="card"><img class="card_img" src="images/holocron.jpg" alt="jedi-holocron" onclick="choose(3)"></div>
+            <div class="card"><img class="card_img" src="images/holocron.jpg" alt="jedi-holocron" onclick="choose(4)"></div>
+            <div class="card"><img class="card_img" src="images/holocron.jpg" alt="jedi-holocron" onclick="choose(5)"></div>
+            <div class="card"><img class="card_img" src="images/holocron.jpg" alt="jedi-holocron" onclick="choose(6)"></div>
+            <div class="card"><img class="card_img" src="images/holocron.jpg" alt="jedi-holocron" onclick="choose(7)"></div>
+            <div class="card"><img class="card_img" src="images/holocron.jpg" alt="jedi-holocron" onclick="choose(8)"></div>
+            <div class="card"><img class="card_img" src="images/holocron.jpg" alt="jedi-holocron" onclick="choose(9)"></div>
+            <div class="card"><img class="card_img" src="images/holocron.jpg" alt="jedi-holocron" onclick="choose(10)"></div>
+            <div class="card"><img class="card_img" src="images/holocron.jpg" alt="jedi-holocron" onclick="choose(11)"></div>
+            <div class="card"><img class="card_img" src="images/holocron.jpg" alt="jedi-holocron" onclick="choose(12)"></div>
+            <div class="card"><img class="card_img" src="images/holocron.jpg" alt="jedi-holocron" onclick="choose(13)"></div>
+            <div class="card"><img class="card_img" src="images/holocron.jpg" alt="jedi-holocron" onclick="choose(14)"></div>
+            <div class="card"><img class="card_img" src="images/holocron.jpg" alt="jedi-holocron" onclick="choose(15)"></div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Created by Bruno with <span><i class="fas fa-space-shuttle"></i></span>. More on my <a href="https://github.com/DownTheMatrix" target="_blank">GitHub</a> page.</p>
+        </footer>
+
+        <!-- Audio Source 
+        <audio id="main_theme" src="audio/cantina-song.mp3"></audio> -->
+
+    <!-- Congratulation Modal -->
+    <div id="congratsModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+            <h2>Match Recap</h2>
+        </div>
+        <div class="modal-body">
+          <p id="match-recap"></p>
+        </div>
+        <div class="modal-footer">
+          <h3>Do you want to play again?</h3><span class="restart"><i class="fas fa-redo"></i></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Difficulty level (to implement)
+        <select name="difficulty" id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="normal" selected>Normal</option>
+            <option value="hard">Hard</option>
+        </select> -->
+
+        <!-- Change Deck (to implement)
+        <select name="deck" id="deck">
+            <option value="Star Wars: Rebels" selected>Star Wars: Rebels</option>
+            <option value="Star Wars: The Clone Wars">Star Wars: The Clone Wars</option>
+            <option value="Star Wars: The Old Republic">Star Wars: The Old Republic</option>
+        </select> -->
+
+<script src="js/main.js"></script>
+</body>
+</html>
