@@ -1,3 +1,6 @@
+/* I want to thank from the bottom of my heart all the people who helped me with this project. In particular,
+I want to mention Lybhy (Ariela), who shared many useful tips with me. What a great community! */
+
 // Declare main variables
 let numClick = 0;
 let match = 0;
@@ -24,9 +27,6 @@ cards[12] = "images/sabine.jpg";
 cards[13] = "images/sabine.jpg";
 cards[14] = "images/ahsoka.jpg";
 cards[15] = "images/ahsoka.jpg";
-
-// Keep track of open cards
-let openCards = [];
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -75,12 +75,14 @@ function choose(card) {
   }
 
 // Check if cards match (must fix animation problem)
+let divsCard = document.querySelectorAll('.card');
 function control() {
     clearInterval(timer);
     numClick = 0;
-    if (cards[secondCard] === cards[firstCard]) {
+    if (cards[secondCard] === cards[firstCard]) {     
       match++;
-       // add animation
+      divsCard[secondCard].classList.add('pulse');  // add "pulse" animation
+      divsCard[firstCard].classList.add('pulse');  // add "pulse" animation
       if (match === 8) {
         modal.style.display = "block"; // display congratulations modal with score stats
         let matchRecap = document.querySelector('#match-recap');
