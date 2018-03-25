@@ -25,10 +25,12 @@ cards[13] = "images/sabine.jpg";
 cards[14] = "images/ahsoka.jpg";
 cards[15] = "images/ahsoka.jpg";
 
+// Keep track of open cards
+let openCards = [];
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     let currentIndex = array.length, temporaryValue, randomIndex;
-
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -48,12 +50,11 @@ function setMoves() {
     for (let i = 0; i < cardImage.length; i++) {
         cardImage[i].addEventListener('click', function(){
             moves++;
+            choose(i);
+              // alternative to onclick event on cards (divs)
             document.querySelector('.moves').innerHTML = moves;
             return true;
         });
-        if (moves > 16) {
-            document.querySelector('#star-one').classList.remove('fa-star');
-        }
     }
 }
 
@@ -74,12 +75,12 @@ function choose(card) {
   }
 
 // Check if cards match (must fix animation problem)
-let divsCard = document.querySelectorAll('.card');
 function control() {
     clearInterval(timer);
     numClick = 0;
     if (cards[secondCard] === cards[firstCard]) {
       match++;
+       // add animation
       if (match === 8) {
         modal.style.display = "block"; // display congratulations modal with score stats
         let matchRecap = document.querySelector('#match-recap');
