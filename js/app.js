@@ -1,5 +1,4 @@
-/* I want to thank from the bottom of my heart all the people who helped me with this project. In particular,
-I want to mention Lybhy (Ariela), who shared many useful tips with me. What a great community! */
+/* I want to thank Lybhy (Ariela), who shared many useful tips with me. What a great community! */
 
 // Declare main variables
 let numClick = 0;
@@ -44,16 +43,25 @@ function shuffle(array) {
 // Select the cards images
 let cardImage = document.querySelectorAll('.card_img');
 
-// Listen to number of times clicked and update "moves"
+// Update moves count and set star rating accordingly
 let moves = 0;
+let starCount = 3;
+let trackMoves = document.querySelector('.moves');
 function setMoves() {
     for (let i = 0; i < cardImage.length; i++) {
         cardImage[i].addEventListener('click', function(){
             moves++;
             choose(i);
-              // alternative to onclick event on cards (divs)
-            document.querySelector('.moves').innerHTML = moves;
-            return true;
+            trackMoves.innerHTML = moves;
+            if (moves > 0 && moves <= 16) {
+                starCount = starCount;
+            } else if (moves >= 16 && moves <= 22) {
+              starOne.setAttribute('style', 'display: none');
+              starCount = 2;
+            } else if (moves > 22) {
+              starTwo.setAttribute('style', 'display: none');
+              starCount = 1;
+            }
         });
     }
 }
@@ -70,7 +78,7 @@ function choose(card) {
       document.images[card].src = cards[card];
       timer = setInterval(control, 1000);
     } else {
-      alert("Patience, young Padawan");
+      return;
     }
   }
 
@@ -86,7 +94,7 @@ function control() {
       divsCard[secondCard].setAttribute('style', 'pointer-events: none');  // disable click on open cards
       divsCard[firstCard].setAttribute('style', 'pointer-events: none');  // disable click on open cards
       if (match === 8) {
-        modal.style.display = "block"; // display congratulations modal with score stats
+        modal.style.display = "block";  // display congratulations modal with score stats
         let matchRecap = document.querySelector('#match-recap');
         matchRecap.innerHTML = "Congratulations! You found all the pairs in " + mins + "m and " + secs + "s" + ", with a total of " + moves + " moves!" ;
       }
@@ -117,11 +125,16 @@ for (let i = 0; i < restart.length; i++) {
         mins = 0;
         secs = - 1;
         modal.style.display = "none";
+        starCount = 3;
+        starOne.setAttribute('style', 'display: inline-block');  // restore stars
+        starTwo.setAttribute('style', 'display: inline-block');  // restore stars
     });
 }
 
 // Star Rating
-
+let starOne = document.getElementById('star-one');
+let starTwo = document.getElementById('star-two');
+let starThree = document.getElementById('star-three');
 
 // Count-up Timer
 let countUpTimer = document.querySelector(".timer");
