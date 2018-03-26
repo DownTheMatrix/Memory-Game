@@ -83,6 +83,8 @@ function control() {
       match++;
       divsCard[secondCard].classList.add('pulse');  // add "pulse" animation
       divsCard[firstCard].classList.add('pulse');  // add "pulse" animation
+      divsCard[secondCard].setAttribute('style', 'pointer-events: none');  // disable click on open cards
+      divsCard[firstCard].setAttribute('style', 'pointer-events: none');  // disable click on open cards
       if (match === 8) {
         modal.style.display = "block"; // display congratulations modal with score stats
         let matchRecap = document.querySelector('#match-recap');
