@@ -162,13 +162,5 @@ let modal = document.getElementById("congratsModal");
 // Get the button that opens the modal
 let btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-let span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
 // Display match recap 
 let matchRecap = document.querySelector('#match-recap');
