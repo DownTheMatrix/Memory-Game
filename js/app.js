@@ -43,9 +43,16 @@ function shuffle(array) {
 // Select the cards images
 let cardImage = document.querySelectorAll('.card_img');
 
+// Star Rating
+let starOne = document.getElementById('star-one');
+let starTwo = document.getElementById('star-two');
+let starThree = document.getElementById('star-three');
+const starsTotal = document.querySelector('#starsTotal');
+let starCount = 3;
+const finalRating = starCount;
+
 // Update moves count and set star rating accordingly
 let moves = 0;
-let starCount = 3;
 let trackMoves = document.querySelector('.moves');
 function setMoves() {
     for (let i = 0; i < cardImage.length; i++) {
@@ -82,10 +89,10 @@ function choose(card) {
     }
   }
 
-// Check if cards match (must fix animation problem)
+// Check if cards match
 let divsCard = document.querySelectorAll('.card');
 function control() {
-    clearInterval(timer);
+    clearInterval(timer);  // add time before the cards flip if not matched
     numClick = 0;
     if (cards[secondCard] === cards[firstCard]) {     
       match++;
@@ -96,7 +103,7 @@ function control() {
       if (match === 8) {
         modal.style.display = "block";  // display congratulations modal with score stats
         let matchRecap = document.querySelector('#match-recap');
-        matchRecap.innerHTML = "Congratulations! You found all the pairs in " + mins + "m and " + secs + "s" + ", with a total of " + moves + " moves!" ;
+        matchRecap.innerHTML = "Congratulations! You found all the pairs in " + mins + "m and " + secs + "s" + ", with a total of " + moves + " moves! \nYour rating is " + finalRating + "!";
       }
     } else {
       document.images[firstCard].src = "images/holocron.jpg";
@@ -123,22 +130,17 @@ for (let i = 0; i < restart.length; i++) {
         }
         shuffle(cards);
         mins = 0;
-        secs = - 1;
+        secs = 0;
         modal.style.display = "none";
         starCount = 3;
         starOne.setAttribute('style', 'display: inline-block');  // restore stars
-        starTwo.setAttribute('style', 'display: inline-block');  // restore stars
+        starTwo.setAttribute('style', 'display: inline-block');   // restore stars
     });
 }
 
-// Star Rating
-let starOne = document.getElementById('star-one');
-let starTwo = document.getElementById('star-two');
-let starThree = document.getElementById('star-three');
-
 // Count-up Timer
 let countUpTimer = document.querySelector(".timer");
-let secs = - 1;
+let secs = 0;
 let mins = 0;
 let stopTime = 0;
 
@@ -157,10 +159,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Modals, source: https://www.w3schools.com/howto/howto_css_modals.asp */
 // Get the modal
-let modal = document.getElementById("congratsModal");
+const modal = document.getElementById("congratsModal");
 
 // Get the button that opens the modal
-let btn = document.getElementById("myBtn");
+const btn = document.getElementById("myBtn");
 
 // Display match recap 
 let matchRecap = document.querySelector('#match-recap');
