@@ -24,3 +24,6 @@ All the game stats (moves, time and star rating) are summed up in the final cong
 
 This is my first full-fledged web project involving html, css and javascript. As such, it lacks structure and it doesn't address code readability and responsiveness in the best possible way. That being said, I plan to improve the code as soon as my skills progress.
 
+##### Code Dependencies
+
+The app is built without using any framework, and it relies on CSS Grid system and Vanilla JS only. 
