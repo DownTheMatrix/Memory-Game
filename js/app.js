@@ -132,7 +132,6 @@ for (let i = 0; i < restart.length; i++) {
         mins = 0;
         secs = 0;
         modal.style.display = "none";
-        starCount = 3;
         starOne.setAttribute('style', 'display: inline-block');  // restore stars
         starTwo.setAttribute('style', 'display: inline-block');   // restore stars
     });
