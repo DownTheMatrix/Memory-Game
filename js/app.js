@@ -4,10 +4,9 @@ let match = 0;
 let firstCard;
 let secondCard;
 
-// Create a list that holds the cards
-const cards = ["images/ezra.jpg", "images/ezra.jpg", "images/hera.jpg", "images/hera.jpg", "images/thrawn.jpg", 
-"images/thrawn.jpg","images/kanan.jpg", "images/kanan.jpg", "images/zeb.jpg", "images/zeb.jpg", "images/chopper2.jpg", 
-"images/chopper2.jpg", "images/sabine.jpg", "images/sabine.jpg", "images/ahsoka.jpg", "images/ahsoka.jpg"];
+// Create a list that holds the cards 
+const cards = ["images/ezra.jpg", "images/hera.jpg","images/thrawn.jpg","images/kanan.jpg", "images/zeb.jpg", "images/chopper2.jpg", "images/sabine.jpg", "images/ahsoka.jpg"];
+const doppelCards = cards.concat(cards);
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -57,12 +56,12 @@ function setMoves() {
 function choose(card) {
     if (numClick === 0) {
       firstCard = card;
-      document.images[card].src = cards[card];
+      document.images[card].src = doppelCards[card];
       numClick = 1;
     } else if (numClick === 1) {
       numClick = 2;
       secondCard = card;
-      document.images[card].src = cards[card];
+      document.images[card].src = doppelCards[card];
       timer = setInterval(control, 1000);
     } else {
       return;
@@ -74,7 +73,7 @@ let divsCard = document.querySelectorAll('.card');
 function control() {
     clearInterval(timer);  // add time before the cards flip if not matched
     numClick = 0;
-    if (cards[secondCard] === cards[firstCard]) {     
+    if (doppelCards[secondCard] === doppelCards[firstCard]) {     
       match++;
       divsCard[secondCard].classList.add('pulse');  // add "pulse" animation
       divsCard[firstCard].classList.add('pulse');  // add "pulse" animation
@@ -95,7 +94,7 @@ function control() {
 
 // Store shuffle cards function in a variable (taken from Youtube tutorial)
 let s;
-s = shuffle(cards);
+s = shuffle(doppelCards);
 
 // Select restart button and start new game
 const restart = document.querySelectorAll('.restart');
@@ -110,7 +109,7 @@ for (let i = 0; i < restart.length; i++) {
             divsCard[i].setAttribute('style', 'pointer-events: auto');  // restore click on open cards
             divsCard[i].setAttribute('style', 'pointer-events: auro');  // restore click on open cards
         }
-        shuffle(cards);
+        shuffle(doppelCards);
         mins = 0;
         secs = 0;
         modal.style.display = "none";
