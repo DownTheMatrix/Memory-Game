@@ -11,6 +11,14 @@ body { /* source: https://uigradients.com/#Horizon */
     background: linear-gradient(to right, #E5E5BE, #003973); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
 a {text-decoration: none;}
 
 /* Heading */
@@ -49,24 +57,21 @@ a {text-decoration: none;}
     height: 100%;
 }
 
-/* Animations */
 .card:hover {
 	cursor: pointer;
 	border: 2px solid #4692b1;
 	box-shadow: 1px 1px 1px 1px #4692b1;
 }
 
-.shake {
-	animation-name: shake;
-    animation-duration: 0.3s;
+/* Animations */
+.pulse {
+    animation-name: pulse;
+    animation-duration: 0.4s;
 }
 
-.wrong {border: 3px solid red;}
-
-@keyframes shake {
-	0%, 100% {transform: translateX(0);}
-	20%, 60% {transform: translateX(-30px);}
-	40%, 80% {transform: translateX(30px);}
+.wrong {
+    animation-name: shake;
+    animation-duration: 0.3s;
 }
 
 /* Score Panel */
@@ -133,7 +138,7 @@ body {font-family: 'Rammetto One', cursive;}
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 80px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -158,16 +163,16 @@ body {font-family: 'Rammetto One', cursive;}
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
+    background-color: #6157e2;
+    color: rgb(238, 231, 231);
 }
 
 .modal-body {padding: 2px 16px;}
 
 .modal-footer {
     padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
+    background-color: #6157e2;
+    color: rgb(238, 231, 231);
 }
 
 /* Timer */
@@ -182,6 +187,18 @@ body {font-family: 'Rammetto One', cursive;}
 @keyframes animatetop {
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
+}
+
+@-webkit-keyframes shake {
+	0%, 100% {transform: translateX(0);}
+	20%, 60% {transform: translateX(-30px);}
+	40%, 80% {transform: translateX(30px);}
+}
+
+@keyframes shake {
+	0%, 100% {transform: translateX(0);}
+	20%, 60% {transform: translateX(-30px);}
+	40%, 80% {transform: translateX(30px);}
 }
 
 /* Modal alt animation */
@@ -207,7 +224,7 @@ body {font-family: 'Rammetto One', cursive;}
     }
   }
 
-/* Cards Aniimation */
+  /* Cards Aniimation */
   /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
 
 @-webkit-keyframes pulse {
@@ -251,3 +268,5 @@ body {font-family: 'Rammetto One', cursive;}
 
   /* Footer */
 .fa-space-shuttle {color: rgb(28, 97, 104);}
+
+/* Media Queries */
