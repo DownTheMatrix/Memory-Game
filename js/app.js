@@ -1,5 +1,3 @@
-/* I want to thank Lybhy (Ariela), who shared many useful tips with me. What a great community! */
-
 // Declare main variables
 let numClick = 0;
 let match = 0;
@@ -7,25 +5,9 @@ let firstCard;
 let secondCard;
 
 // Create a list that holds the cards
-let cards = [];
-
-// Link images to array index
-cards[0] = "images/ezra.jpg";
-cards[1] = "images/ezra.jpg";
-cards[2] = "images/hera.jpg";
-cards[3] = "images/hera.jpg";
-cards[4] = "images/thrawn.jpg";
-cards[5] = "images/thrawn.jpg";
-cards[6] = "images/kanan.jpg";
-cards[7] = "images/kanan.jpg";
-cards[8] = "images/zeb.jpg";
-cards[9] = "images/zeb.jpg";
-cards[10] = "images/chopper2.jpg";
-cards[11] = "images/chopper2.jpg";
-cards[12] = "images/sabine.jpg";
-cards[13] = "images/sabine.jpg";
-cards[14] = "images/ahsoka.jpg";
-cards[15] = "images/ahsoka.jpg";
+const cards = ["images/ezra.jpg", "images/ezra.jpg", "images/hera.jpg", "images/hera.jpg", "images/thrawn.jpg", 
+"images/thrawn.jpg","images/kanan.jpg", "images/kanan.jpg", "images/zeb.jpg", "images/zeb.jpg", "images/chopper2.jpg", 
+"images/chopper2.jpg", "images/sabine.jpg", "images/sabine.jpg", "images/ahsoka.jpg", "images/ahsoka.jpg"];
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -116,7 +98,7 @@ let s;
 s = shuffle(cards);
 
 // Select restart button and start new game
-let restart = document.querySelectorAll('.restart');
+const restart = document.querySelectorAll('.restart');
 for (let i = 0; i < restart.length; i++) {
     restart[i].addEventListener('click', function(){
         moves = 0;
