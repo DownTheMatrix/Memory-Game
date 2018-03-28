@@ -48,8 +48,7 @@ let starOne = document.getElementById('star-one');
 let starTwo = document.getElementById('star-two');
 let starThree = document.getElementById('star-three');
 const starsTotal = document.querySelector('#starsTotal');
-let starCount = 3;
-const finalRating = starCount;
+
 
 // Update moves count and set star rating accordingly
 let moves = 0;
@@ -61,13 +60,13 @@ function setMoves() {
             choose(i);
             trackMoves.innerHTML = moves;
             if (moves > 0 && moves <= 16) {
-                starCount = starCount;
+                starsTotal.textContent = 3;
             } else if (moves >= 16 && moves <= 22) {
               starOne.setAttribute('style', 'display: none');
-              starCount = 2;
+              starsTotal.textContent = 2;
             } else if (moves > 22) {
               starTwo.setAttribute('style', 'display: none');
-              starCount = 1;
+              starsTotal.textContent = 1;
             }
         });
     }
@@ -103,7 +102,7 @@ function control() {
       if (match === 8) {
         modal.style.display = "block";  // display congratulations modal with score stats
         let matchRecap = document.querySelector('#match-recap');
-        matchRecap.innerHTML = "Congratulations! You found all the pairs in " + mins + "m and " + secs + "s" + ", with a total of " + moves + " moves! \nYour rating is " + finalRating + "!";
+        matchRecap.innerHTML = "Congratulations! You found all the pairs in " + mins + "m and " + secs + "s" + ", with a total of " + moves + " moves! \nYour rating is " + starsTotal.textContent + "!";
       }
     } else {
       document.images[firstCard].src = "images/holocron.jpg";
