@@ -27,3 +27,11 @@ This is my first full-fledged web project involving html, css and javascript. As
 ##### Code Dependencies
 
 The app is built without using any framework, and it relies on CSS Grid system and Vanilla JS only. 
+
+#### Acknowledgements
+
++ [Udacity](https://eu.udacity.com/), for the great challenge
++ [Font Awesome](https://fontawesome.com/), for the cool icon(s)
++ [Stackoverflow](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/2450976#2450976), for the Fisher-Yates Shuffle Algorithm
++ [LucasArts/Disney](http://www.starwars.com/), for the awesome Star Wars universe
++ [Google Images](https://images.google.com/), for the nice images I used for the cards
