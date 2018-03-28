@@ -1,8 +1,16 @@
 // Declare main variables
-let numClick = 0;
-let match = 0;
 let firstCard;
 let secondCard;
+
+// Create game object
+const game = {
+    numClick: 0,
+    match: 0,
+    moves: 0
+}
+
+// Create game UI object
+game.ui = {};
 
 // Create a list that holds the cards 
 const cards = ["images/ezra.jpg", "images/hera.jpg","images/thrawn.jpg","images/kanan.jpg", "images/zeb.jpg", "images/chopper2.jpg", "images/sabine.jpg", "images/ahsoka.jpg"];
@@ -31,20 +39,20 @@ let starThree = document.getElementById('star-three');
 const starsTotal = document.querySelector('#starsTotal');
 
 // Update moves count and set star rating accordingly
-let moves = 0;
+
 let trackMoves = document.querySelector('.moves');
 function setMoves() {
     for (let i = 0; i < cardImage.length; i++) {
         cardImage[i].addEventListener('click', function(){
-            moves++;
+            game.moves++;
             choose(i);
-            trackMoves.innerHTML = moves;
-            if (moves > 0 && moves <= 22) {
+            trackMoves.innerHTML = game.moves;
+            if (game.moves > 0 && game.moves <= 22) {
                 starsTotal.textContent = 3;
-            } else if (moves >= 22 && moves <= 40) {
+            } else if (game.moves >= 22 && game.moves <= 40) {
               starOne.setAttribute('style', 'display: none');
               starsTotal.textContent = 2;
-            } else if (moves > 40) {
+            } else if (game.moves > 40) {
               starTwo.setAttribute('style', 'display: none');
               starsTotal.textContent = 1;
             }
@@ -54,12 +62,12 @@ function setMoves() {
 
 // Check when card is clicked
 function choose(card) {
-    if (numClick === 0) {
+    if (game.numClick === 0) {
       firstCard = card;
       document.images[card].src = doppelCards[card];
-      numClick = 1;
-    } else if (numClick === 1) {
-      numClick = 2;
+      game.numClick = 1;
+    } else if (game.numClick === 1) {
+      game.numClick = 2;
       secondCard = card;
       document.images[card].src = doppelCards[card];
       timer = setInterval(control, 1000);
@@ -72,9 +80,9 @@ function choose(card) {
 let divsCard = document.querySelectorAll('.card');
 function control() {
     clearInterval(timer);  // add time before the cards flip if not matched
-    numClick = 0;
+    game.numClick = 0;
     if (doppelCards[secondCard] === doppelCards[firstCard]) {     
-      match++;
+      game.match++;
       divsCard[secondCard].classList.add('pulse');  // add "pulse" animation
       divsCard[firstCard].classList.add('pulse');  // add "pulse" animation
       divsCard[secondCard].setAttribute('style', 'pointer-events: none');  // disable click on open cards
@@ -82,7 +90,7 @@ function control() {
       if (match === 8) {
         modal.style.display = "block";  // display congratulations modal with score stats
         let matchRecap = document.querySelector('#match-recap');
-        matchRecap.innerHTML = "Congratulations! You found all the pairs in " + mins + "m and " + secs + "s" + ", with a total of " + moves + " moves! \nYour rating is " + starsTotal.textContent + "!";
+        matchRecap.innerHTML = "Congratulations! You found all the pairs in " + mins + "m and " + secs + "s" + ", with a total of " + game.moves + " moves! \nYour rating is " + starsTotal.textContent + "!";
       }
     } else {
       document.images[firstCard].src = "images/holocron.jpg";
@@ -100,7 +108,7 @@ s = shuffle(doppelCards);
 const restart = document.querySelectorAll('.restart');
 for (let i = 0; i < restart.length; i++) {
     restart[i].addEventListener('click', function(){
-        moves = 0;
+        game.moves = 0;
         document.querySelector(".moves").innerHTML = 0;
         let cardImage = document.querySelectorAll('.card_img');
         for (let i = 0; i < cardImage.length; i++) {
@@ -118,7 +126,6 @@ for (let i = 0; i < restart.length; i++) {
     });
 }
 
-// Count-up Timer
 let countUpTimer = document.querySelector(".timer");
 let secs = 0;
 let mins = 0;
