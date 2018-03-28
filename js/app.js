@@ -49,7 +49,6 @@ let starTwo = document.getElementById('star-two');
 let starThree = document.getElementById('star-three');
 const starsTotal = document.querySelector('#starsTotal');
 
-
 // Update moves count and set star rating accordingly
 let moves = 0;
 let trackMoves = document.querySelector('.moves');
