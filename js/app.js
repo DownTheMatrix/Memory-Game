@@ -58,12 +58,12 @@ function setMoves() {
             moves++;
             choose(i);
             trackMoves.innerHTML = moves;
-            if (moves > 0 && moves <= 16) {
+            if (moves > 0 && moves <= 22) {
                 starsTotal.textContent = 3;
-            } else if (moves >= 16 && moves <= 22) {
+            } else if (moves >= 22 && moves <= 40) {
               starOne.setAttribute('style', 'display: none');
               starsTotal.textContent = 2;
-            } else if (moves > 22) {
+            } else if (moves > 40) {
               starTwo.setAttribute('style', 'display: none');
               starsTotal.textContent = 1;
             }
