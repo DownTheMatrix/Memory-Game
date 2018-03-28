@@ -44,15 +44,14 @@ let trackMoves = document.querySelector('.moves');
 function setMoves() {
     for (let i = 0; i < cardImage.length; i++) {
         cardImage[i].addEventListener('click', function(){
-            game.moves++;
             choose(i);
             trackMoves.innerHTML = game.moves;
-            if (game.moves > 0 && game.moves <= 22) {
+            if (game.moves > 0 && game.moves <= 16) {
                 starsTotal.textContent = 3;
-            } else if (game.moves >= 22 && game.moves <= 40) {
+            } else if (game.moves >= 16 && game.moves <= 24) {
               starOne.setAttribute('style', 'display: none');
               starsTotal.textContent = 2;
-            } else if (game.moves > 40) {
+            } else if (game.moves > 24) {
               starTwo.setAttribute('style', 'display: none');
               starsTotal.textContent = 1;
             }
@@ -68,6 +67,7 @@ function choose(card) {
       game.numClick = 1;
     } else if (game.numClick === 1) {
       game.numClick = 2;
+      game.moves++;  // update number of moves after two cards are clicked on
       secondCard = card;
       document.images[card].src = doppelCards[card];
       timer = setInterval(control, 1000);
@@ -87,7 +87,7 @@ function control() {
       divsCard[firstCard].classList.add('pulse');  // add "pulse" animation
       divsCard[secondCard].setAttribute('style', 'pointer-events: none');  // disable click on open cards
       divsCard[firstCard].setAttribute('style', 'pointer-events: none');  // disable click on open cards
-      if (match === 8) {
+      if (game.match === 8) {
         modal.style.display = "block";  // display congratulations modal with score stats
         let matchRecap = document.querySelector('#match-recap');
         matchRecap.innerHTML = "Congratulations! You found all the pairs in " + mins + "m and " + secs + "s" + ", with a total of " + game.moves + " moves! \nYour rating is " + starsTotal.textContent + "!";
