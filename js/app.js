@@ -125,6 +125,8 @@ for (let i = 0; i < restart.length; i++) {
         for (let i = 0; i < cardImage.length; i++) {
             cardImage[i].removeAttribute("src");
             cardImage[i].setAttribute("src", "images/holocron.jpg");
+            divsCard[i].setAttribute('style', 'pointer-events: auto');  // restore click on open cards
+            divsCard[i].setAttribute('style', 'pointer-events: auro');  // restore click on open cards
         }
         shuffle(cards);
         mins = 0;
