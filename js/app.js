@@ -88,6 +88,7 @@ function control() {
       divsCard[secondCard].setAttribute('style', 'pointer-events: none');  // disable click on open cards
       divsCard[firstCard].setAttribute('style', 'pointer-events: none');  // disable click on open cards
       if (game.match === 8) {
+        stopTime = 1;
         modal.style.display = "block";  // display congratulations modal with score stats
         let matchRecap = document.querySelector('#match-recap');
         matchRecap.innerHTML = "Congratulations! You found all the pairs in " + mins + "m and " + secs + "s" + ", with a total of " + game.moves + " moves! \nYour rating is " + starsTotal.textContent + "!";
@@ -108,25 +109,11 @@ s = shuffle(doppelCards);
 const restart = document.querySelectorAll('.restart');
 for (let i = 0; i < restart.length; i++) {
     restart[i].addEventListener('click', function(){
-        game.moves = 0;
-        document.querySelector(".moves").innerHTML = 0;
-        let cardImage = document.querySelectorAll('.card_img');
-        for (let i = 0; i < cardImage.length; i++) {
-            cardImage[i].removeAttribute("src");
-            cardImage[i].setAttribute("src", "images/holocron.jpg");
-            divsCard[i].setAttribute('style', 'pointer-events: auto');  // restore click on open cards
-            divsCard[i].setAttribute('style', 'pointer-events: auro');  // restore click on open cards
-        }
-        shuffle(doppelCards);
-        mins = 0;
-        secs = 0;
-        modal.style.display = "none";
-        starOne.setAttribute('style', 'display: inline-block');  // restore stars
-        starTwo.setAttribute('style', 'display: inline-block');   // restore stars
+        location.reload();  // refresh the current page 
     });
 }
 
-let countUpTimer = document.querySelector(".timer");
+const countUpTimer = document.querySelector(".timer");
 let secs = 0;
 let mins = 0;
 let stopTime = 0;
