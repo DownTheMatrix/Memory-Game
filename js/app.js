@@ -9,9 +9,6 @@ const game = {
     moves: 0
 }
 
-// Create game UI object
-game.ui = {};
-
 // Create a list that holds the cards 
 const cards = ["images/ezra.jpg", "images/hera.jpg","images/thrawn.jpg","images/kanan.jpg", "images/zeb.jpg", "images/chopper2.jpg", "images/sabine.jpg", "images/ahsoka.jpg"];
 const doppelCards = cards.concat(cards);
@@ -30,17 +27,16 @@ function shuffle(array) {
 }
 
 // Select the cards images
-let cardImage = document.querySelectorAll('.card_img');
+const cardImage = document.querySelectorAll('.card-img');
 
 // Star Rating
-let starOne = document.getElementById('star-one');
-let starTwo = document.getElementById('star-two');
-let starThree = document.getElementById('star-three');
+const starOne = document.getElementById('star-one');
+const starTwo = document.getElementById('star-two');
+const starThree = document.getElementById('star-three');
 const starsTotal = document.querySelector('#starsTotal');
 
 // Update moves count and set star rating accordingly
-
-let trackMoves = document.querySelector('.moves');
+const trackMoves = document.querySelector('.moves');
 function setMoves() {
     for (let i = 0; i < cardImage.length; i++) {
         cardImage[i].addEventListener('click', function(){
@@ -67,7 +63,7 @@ function choose(card) {
       game.numClick = 1;
     } else if (game.numClick === 1) {
       game.numClick = 2;
-      game.moves++;  // update number of moves after two cards are clicked on
+      game.moves++;  // update number of moves only after two cards are clicked on
       secondCard = card;
       document.images[card].src = doppelCards[card];
       timer = setInterval(control, 1000);
@@ -101,9 +97,8 @@ function control() {
   }
   setMoves();
 
-// Store shuffle cards function in a variable (taken from Youtube tutorial)
-let s;
-s = shuffle(doppelCards);
+// Shuffle cards
+shuffle(doppelCards);
 
 // Select restart button and start new game
 const restart = document.querySelectorAll('.restart');
@@ -121,7 +116,7 @@ let stopTime = 0;
 document.addEventListener('DOMContentLoaded', function() {
     setInterval(function() {
         if (stopTime !== 1) {
-            secs ++;
+            secs++;
             if (secs === 60) {
                 mins++;
                 secs = 0;
@@ -131,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 1000);
 });
 
-/* Modals, source: https://www.w3schools.com/howto/howto_css_modals.asp */
+/* Modal, source: https://www.w3schools.com/howto/howto_css_modals.asp */
 // Get the modal
 const modal = document.getElementById("congratsModal");
 
@@ -139,4 +134,4 @@ const modal = document.getElementById("congratsModal");
 const btn = document.getElementById("myBtn");
 
 // Display match recap 
-let matchRecap = document.querySelector('#match-recap');
+const matchRecap = document.querySelector('#match-recap');
