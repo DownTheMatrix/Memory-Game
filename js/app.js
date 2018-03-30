@@ -100,7 +100,7 @@ const initGame = () => {
         }
     }
     setMoves();
-    setInterval(function () {
+    setInterval(function() {
         if (stopTime !== 1) {
             secs++;
             if (secs === 60) {
@@ -128,11 +128,13 @@ function refresh() {
     mins = 0;
     stopTime = 0;
     game.moves = 0;
+    game.match = 0;  // Reinitialize game logic
     const trackMoves = document.querySelector('.moves');
     trackMoves.innerHTML = 0;
     starsTotal.textContent = 3;
     starOne.setAttribute('style', 'display: inline-block');
     starTwo.setAttribute('style', 'display: inline-block');
+    game.numClick = 0;
     for (let i = 0; i < cardImage.length; i++) {
         cardImage[i].setAttribute('src', 'images/holocron.jpg');
     }
