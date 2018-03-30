@@ -1,8 +1,13 @@
 // Declare main variables
-let numClick = 0;
-let match = 0;
 let firstCard;
 let secondCard;
+
+// Create game object
+const game = {
+    numClick: 0,
+    match: 0,
+    moves: 0
+}
 
 // Create a list that holds the cards 
 const cards = ["images/ezra.jpg", "images/hera.jpg","images/thrawn.jpg","images/kanan.jpg", "images/zeb.jpg", "images/chopper2.jpg", "images/sabine.jpg", "images/ahsoka.jpg"];
@@ -22,29 +27,27 @@ function shuffle(array) {
 }
 
 // Select the cards images
-let cardImage = document.querySelectorAll('.card_img');
+const cardImage = document.querySelectorAll('.card-img');
 
 // Star Rating
-let starOne = document.getElementById('star-one');
-let starTwo = document.getElementById('star-two');
-let starThree = document.getElementById('star-three');
+const starOne = document.getElementById('star-one');
+const starTwo = document.getElementById('star-two');
+const starThree = document.getElementById('star-three');
 const starsTotal = document.querySelector('#starsTotal');
 
 // Update moves count and set star rating accordingly
-let moves = 0;
-let trackMoves = document.querySelector('.moves');
+const trackMoves = document.querySelector('.moves');
 function setMoves() {
     for (let i = 0; i < cardImage.length; i++) {
         cardImage[i].addEventListener('click', function(){
-            moves++;
             choose(i);
-            trackMoves.innerHTML = moves;
-            if (moves > 0 && moves <= 22) {
+            trackMoves.innerHTML = game.moves;
+            if (game.moves > 0 && game.moves <= 16) {
                 starsTotal.textContent = 3;
-            } else if (moves >= 22 && moves <= 40) {
+            } else if (game.moves >= 16 && game.moves <= 24) {
               starOne.setAttribute('style', 'display: none');
               starsTotal.textContent = 2;
-            } else if (moves > 40) {
+            } else if (game.moves > 24) {
               starTwo.setAttribute('style', 'display: none');
               starsTotal.textContent = 1;
             }
@@ -54,12 +57,13 @@ function setMoves() {
 
 // Check when card is clicked
 function choose(card) {
-    if (numClick === 0) {
+    if (game.numClick === 0) {
       firstCard = card;
       document.images[card].src = doppelCards[card];
-      numClick = 1;
-    } else if (numClick === 1) {
-      numClick = 2;
+      game.numClick = 1;
+    } else if (game.numClick === 1) {
+      game.numClick = 2;
+      game.moves++;  // update number of moves only after two cards are clicked on
       secondCard = card;
       document.images[card].src = doppelCards[card];
       timer = setInterval(control, 1000);
@@ -72,17 +76,18 @@ function choose(card) {
 let divsCard = document.querySelectorAll('.card');
 function control() {
     clearInterval(timer);  // add time before the cards flip if not matched
-    numClick = 0;
+    game.numClick = 0;
     if (doppelCards[secondCard] === doppelCards[firstCard]) {     
-      match++;
+      game.match++;
       divsCard[secondCard].classList.add('pulse');  // add "pulse" animation
       divsCard[firstCard].classList.add('pulse');  // add "pulse" animation
       divsCard[secondCard].setAttribute('style', 'pointer-events: none');  // disable click on open cards
       divsCard[firstCard].setAttribute('style', 'pointer-events: none');  // disable click on open cards
-      if (match === 8) {
+      if (game.match === 8) {
+        stopTime = 1;
         modal.style.display = "block";  // display congratulations modal with score stats
         let matchRecap = document.querySelector('#match-recap');
-        matchRecap.innerHTML = "Congratulations! You found all the pairs in " + mins + "m and " + secs + "s" + ", with a total of " + moves + " moves! \nYour rating is " + starsTotal.textContent + "!";
+        matchRecap.innerHTML = "Congratulations! You found all the pairs in " + mins + "m and " + secs + "s" + ", with a total of " + game.moves + " moves! \nYour rating is " + starsTotal.textContent + "!";
       }
     } else {
       document.images[firstCard].src = "images/holocron.jpg";
@@ -92,34 +97,18 @@ function control() {
   }
   setMoves();
 
-// Store shuffle cards function in a variable (taken from Youtube tutorial)
-let s;
-s = shuffle(doppelCards);
+// Shuffle cards
+shuffle(doppelCards);
 
 // Select restart button and start new game
 const restart = document.querySelectorAll('.restart');
 for (let i = 0; i < restart.length; i++) {
     restart[i].addEventListener('click', function(){
-        moves = 0;
-        document.querySelector(".moves").innerHTML = 0;
-        let cardImage = document.querySelectorAll('.card_img');
-        for (let i = 0; i < cardImage.length; i++) {
-            cardImage[i].removeAttribute("src");
-            cardImage[i].setAttribute("src", "images/holocron.jpg");
-            divsCard[i].setAttribute('style', 'pointer-events: auto');  // restore click on open cards
-            divsCard[i].setAttribute('style', 'pointer-events: auro');  // restore click on open cards
-        }
-        shuffle(doppelCards);
-        mins = 0;
-        secs = 0;
-        modal.style.display = "none";
-        starOne.setAttribute('style', 'display: inline-block');  // restore stars
-        starTwo.setAttribute('style', 'display: inline-block');   // restore stars
+        location.reload();  // refresh the current page 
     });
 }
 
-// Count-up Timer
-let countUpTimer = document.querySelector(".timer");
+const countUpTimer = document.querySelector(".timer");
 let secs = 0;
 let mins = 0;
 let stopTime = 0;
@@ -127,7 +116,7 @@ let stopTime = 0;
 document.addEventListener('DOMContentLoaded', function() {
     setInterval(function() {
         if (stopTime !== 1) {
-            secs ++;
+            secs++;
             if (secs === 60) {
                 mins++;
                 secs = 0;
@@ -137,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 1000);
 });
 
-/* Modals, source: https://www.w3schools.com/howto/howto_css_modals.asp */
+/* Modal, source: https://www.w3schools.com/howto/howto_css_modals.asp */
 // Get the modal
 const modal = document.getElementById("congratsModal");
 
@@ -145,4 +134,4 @@ const modal = document.getElementById("congratsModal");
 const btn = document.getElementById("myBtn");
 
 // Display match recap 
-let matchRecap = document.querySelector('#match-recap');
+const matchRecap = document.querySelector('#match-recap');

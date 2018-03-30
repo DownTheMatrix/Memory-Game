@@ -6,13 +6,13 @@ A simple Memory Game project for the Udacity FEND Scholarship 2017
 
 + Clone the repo to your local machine
 + Don't alter the folder/file disposition
-+ Click on the index.html file
++ Click on the index.html file top open the app in your browser
 
 ### Rules
 
-There are 16 cards in total, the player must find all the 8 pairs. 
-To do so, simple click on a card to reveal the image hidden. If the cards match, they will stay open. 
-If not, they simply flip back. 
+There are 16 cards in total, the player must find all the 8 pairs and match them together. 
+To do so, simply click on a card to reveal the hidden image. If the cards match, they will stay open.
+If not, they will flip back. 
 
 The number of **moves** (clicks) are tracked in the score panel on top of the grid containing the cards. 
 A **timer** will start as soon as the page loads. Both the number of moves and the timer will be reset when the player clicks on the **restart** button on the top-right corner of the score panel.
@@ -26,7 +26,7 @@ This is my first full-fledged web project involving html, css and javascript. As
 
 ##### Code Dependencies
 
-The app is built without using any framework, and it relies on CSS Grid system and Vanilla JS only. 
+The app is built without using any framework, and it relies on the CSS Grid system and Vanilla JS only. 
 
 #### Acknowledgements
 
