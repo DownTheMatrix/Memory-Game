@@ -6,7 +6,7 @@ let secondCard;
 
 // Create a list that holds the cards 
 const cards = ["images/ezra.jpg", "images/hera.jpg","images/thrawn.jpg","images/kanan.jpg", "images/zeb.jpg", "images/chopper2.jpg", "images/sabine.jpg", "images/ahsoka.jpg"];
-const doppelCards = cards.concat(cards);
+const doppelCards = [...cards, ...cards]; // double the array with ES6
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
