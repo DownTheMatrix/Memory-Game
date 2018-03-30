@@ -268,3 +268,40 @@ body {font-family: 'Rammetto One', cursive;}
 
   /* Footer */
 .fa-space-shuttle {color: rgb(28, 97, 104);}
+
+/* Media Queries */
+@media only screen and (max-width: 918px) {
+    .grid-container {
+        width: 90vw;
+    }
+}
+
+@media only screen and (max-width: 670px) {
+    .grid-container {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: auto;
+    }
+    footer {display: none;}
+    .score-panel {width: 70vw;}
+}
+
+@media screen and (max-width: 620px) {
+     #restart-text {
+        display: none;
+    }
+    .stars {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+    #main-heading {
+        word-wrap: break-word;
+        font-size: 16px;
+    }
+}
