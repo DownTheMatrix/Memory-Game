@@ -58,7 +58,7 @@ const initGame = () => {
         }
     }
 
-    // Check when card is clicked
+    // Check when cards are clicked
     function choose(card) {
         if (game.numClick === 0) {
             firstCard = card;
@@ -81,7 +81,7 @@ const initGame = () => {
     function control() {
         clearInterval(timer); // add time before the cards flip if not matched
         game.numClick = 0;
-        if (doppelCards[secondCard] === doppelCards[firstCard]) {
+        if (doppelCards[secondCard] === doppelCards[firstCard] && firstCard !== secondCard) {  // avoid matching same card by clicking twice on the same one
             game.match++;
             divsCard[secondCard].classList.add('pulse'); // add "pulse" animation
             divsCard[firstCard].classList.add('pulse'); // add "pulse" animation
