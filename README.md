@@ -6,7 +6,7 @@ A simple Memory Game project for the Udacity FEND Scholarship 2017
 
 + Clone the repo to your local machine
 + Don't alter the folder/file disposition
-+ Click on the index.html file top open the app in your browser
++ Click on the index.html file to open the app in your browser
 
 ### Rules
 
