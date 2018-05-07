@@ -8,6 +8,8 @@ A simple Memory Game project for the Udacity FEND Scholarship 2017
 + Don't alter the folder/file disposition
 + Click on the index.html file to open the app in your browser
 
+Alternatively, you can run the [Live Demo](https://downthematrix.github.io/Memory-Game/)
+
 ### Rules
 
 There are 16 cards in total, the player must find all the 8 pairs and match them together. 
