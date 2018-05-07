@@ -2,6 +2,8 @@
 
 A simple Memory Game project for the Udacity FEND Scholarship 2017
 
+![Game Screenshot](https://github.com/DownTheMatrix/Memory-Game/blob/master/Screenshot.png?raw=true)
+
 ## How to run the game
 
 + Clone the repo to your local machine
